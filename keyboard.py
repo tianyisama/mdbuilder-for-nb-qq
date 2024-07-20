@@ -55,13 +55,14 @@ class KeyboardBuilder:
         return button
 
     @classmethod
-    def keyboard(cls, buttons):
+    def keyboard(cls, *button_rows):
         """
         创建键盘布局。
-        :param buttons: 包含按钮的列表
+        :param button_rows: 一个或多个按钮列表，每个列表代表键盘的一行
         :return: 返回构建的 MessageSegment.keyboard
         """
-        keyboard_rows = [InlineKeyboardRow(buttons=buttons)]
+        keyboard_rows = [InlineKeyboardRow(buttons=row) for row in button_rows]
         inline_keyboard = InlineKeyboard(rows=keyboard_rows)
         message_keyboard = MessageKeyboard(content=inline_keyboard)
         return MessageSegment.keyboard(message_keyboard)
+
