@@ -72,7 +72,16 @@ button2 = KeyboardBuilder.button(
     permission_type=2,
     action_data="data2"
 )
-keyboard = KeyboardBuilder.keyboard([button1, button2])
+# 第二行按钮
+button3 = KeyboardBuilder.button(
+    id="3",
+    label="拾雪今天也很激烈",
+    style=0,
+    action_type=2,
+    permission_type=2,
+    action_data="data3"
+)
+keyboard = KeyboardBuilder.keyboard([button1, button2],[button3])
 @nana.handle()
 async def _():
     text = "this is a test"
